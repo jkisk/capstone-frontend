@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-
-import './App.css';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import 'semantic-ui-css/semantic.min.css'
+import Login from './components/Login'
 
 class App extends Component {
   render() {
@@ -11,8 +12,9 @@ class App extends Component {
           <p>
             SCRAMPLES!!
           </p>
-          
+          <Login/>
         </header>
+   
       </div>
     );
   }
