@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseURL = ''//set me!
+const baseURL = 'http://localhost:8080'
 
 const request = (path, method = 'get', body = null) => {
 
