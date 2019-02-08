@@ -5,7 +5,7 @@ import request from '../utils/request'
 import { Input, Button } from 'semantic-ui-react'
 
 
-class Login extends Component {
+class Game extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -71,5 +71,5 @@ const mapStateToProps = state => ({
   export default connect(
     mapStateToProps,
     mapDispatchToProps
-  )(Login);
+  )(Game);
   

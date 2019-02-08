@@ -4,13 +4,15 @@ import logger from 'redux-logger'
 import games from './reducers/games'
 import scores from './reducers/scores'
 import auth from './reducers/auth'
+import players from './reducers/players'
 
 
 
 const reducers = combineReducers({
   games,
   scores,
-  auth
+  auth,
+  players
 })
 
 

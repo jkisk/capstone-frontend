@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import request from '../utils/request'
 import { Input, Button } from 'semantic-ui-react'
+import {setAuthentication} from '../actions/auth'
 
 
 class Login extends Component {
@@ -18,12 +19,10 @@ class Login extends Component {
         this.setState({
             [e.target.name]: e.target.value
         })
-        console.log(this.state)
     }
 
     handleSubmit = (e) => {
         e.preventDefault()
-
         request('/login', 'post', {
             playername: this.state.playername,
             password: this.state.password
@@ -35,7 +34,7 @@ class Login extends Component {
             })
             .then(response => {
                 this.props.setAuthentication(response.data)
-                this.props.history.push('/toggle')
+                this.props.history.push('/game')
             })
             .catch(error => {
                 this.setState({ showErrorMessage: true })
@@ -61,12 +60,13 @@ class Login extends Component {
 
 
 const mapStateToProps = state => ({
-    
+    authentication: state.authentication
   })
   
   const mapDispatchToProps = dispatch => bindActionCreators({
-    
-  
+
+    setAuthentication: setAuthentication
+
   }, dispatch)
   
   export default connect(
