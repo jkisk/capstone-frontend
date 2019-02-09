@@ -34,7 +34,7 @@ class Login extends Component {
             })
             .then(response => {
                 this.props.setAuthentication(response.data)
-                this.props.history.push('/game')
+                this.props.history.push('/play')
             })
             .catch(error => {
                 this.setState({ showErrorMessage: true })
