@@ -49,6 +49,9 @@ class Game extends Component {
                 }
             }
         }
+        this.setState({
+            guess: ''
+        })
     }
 
 
