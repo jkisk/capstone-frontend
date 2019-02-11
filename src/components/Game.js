@@ -29,14 +29,26 @@ class Game extends Component {
         e.preventDefault()
         const arr = this.props.validwords.validArr
         for (let ele of arr) {
-            if (ele === this.state.guess.toLowerCase())
-                this.state.three.push(ele.toLowerCase())
+            if (ele === this.state.guess.toLowerCase()) {
+                console.log(this.state.guess)
+                if (ele.length === 3 && this.state.three.indexOf(ele) === -1) {
+                    this.state.three.push(ele)
+                }
+                if (ele.length === 4 && this.state.four.indexOf(ele)=== -1) {
+                    this.state.four.push(ele)
+                }
+                if (ele.length === 5 && this.state.five.indexOf(ele)=== -1) {
+                    this.state.five.push(ele)
+                }
+                if (ele.length === 6 && this.state.six.indexOf(ele)=== -1) {
+                    this.state.six.push(ele)
+                }
+                if (ele.length === 7 && this.state.seven.indexOf(ele)=== -1) {
+                    this.state.seven.push(ele)
+                }
+            }
         }
     }
-
-
-
-
 
 
     requestNewGame = (e) => {
@@ -47,7 +59,6 @@ class Game extends Component {
     scoreGame = (e) => {
 
     }
-
 
 
     render() {
@@ -67,13 +78,14 @@ class Game extends Component {
                     <Button onClick={this.requestNewGame} basic color='orange' content='NEW GAME' />
                 </Segment>
                 <Segment>
-                    <Button onClick={this.handleGuess} basic color='teal' content='GUESS' />
-                </Segment>
-                <Segment>
                     <Button onClick={this.handleSubmit} basic color='teal' content='SCORE GAME' />
                 </Segment>
                 <Segment>
-                    {this.state.three.map((ele) => {return ele + ' '})}
+                    {this.state.three.map((ele) => { return ele + ' ' })}
+                    {this.state.four.map((ele) => { return ele + ' ' })}
+                    {this.state.five.map((ele) => { return ele + ' ' })}
+                    {this.state.six.map((ele) => { return ele + ' ' })}
+                    {this.state.seven.map((ele) => { return ele + ' ' })}
                 </Segment>
             </div>
         )
