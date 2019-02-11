@@ -27,12 +27,24 @@ class Game extends Component {
 
     handleGuess = (e) => {
         e.preventDefault()
-
-
+        const arr = this.props.validwords.validArr
+        for (let ele of arr) {
+            if (ele === this.state.guess.toLowerCase())
+                this.state.three.push(ele.toLowerCase())
+        }
     }
+
+
+
+
+
 
     requestNewGame = (e) => {
         this.props.newGame(2)
+
+    }
+
+    scoreGame = (e) => {
 
     }
 
@@ -44,7 +56,7 @@ class Game extends Component {
                 <Segment>
                     {/* make more random? use ._shuffle? */}
                     {this.props.playletters ?
-                        this.props.playletters.split('').sort(function(){return 0.5-Math.random()}).join('')
+                        this.props.playletters.split('').sort(function () { return 0.5 - Math.random() }).join('')
                         : null}
                 </Segment>
                 <form onSubmit={this.handleGuess}>
@@ -54,6 +66,15 @@ class Game extends Component {
                 <Segment>
                     <Button onClick={this.requestNewGame} basic color='orange' content='NEW GAME' />
                 </Segment>
+                <Segment>
+                    <Button onClick={this.handleGuess} basic color='teal' content='GUESS' />
+                </Segment>
+                <Segment>
+                    <Button onClick={this.handleSubmit} basic color='teal' content='SCORE GAME' />
+                </Segment>
+                <Segment>
+                    {this.state.three.map((ele) => {return ele + ' '})}
+                </Segment>
             </div>
         )
     }
@@ -61,7 +82,8 @@ class Game extends Component {
 
 
 const mapStateToProps = state => ({
-    playletters: state.games.playletters
+    playletters: state.games.playletters,
+    validwords: state.games.validwords
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
