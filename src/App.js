@@ -4,11 +4,13 @@ import 'semantic-ui-css/semantic.min.css'
 import Login from './components/Login'
 import Game from './components/Game'
 import Signup from './components/Signup'
+import TopNav from './components/TopNav'
 
 class App extends Component {
   render() {
     return (
       <div className="App">
+      <TopNav/>
         <Router>
         <Switch>
           <Route exact path='/' component={() => <Redirect to="/login" />} />
