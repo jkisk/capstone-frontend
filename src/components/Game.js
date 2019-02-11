@@ -42,9 +42,9 @@ class Game extends Component {
         return (
             <div>
                 <Segment>
-                    {/* var shuffled = str.split('').sort(function(){return 0.5-Math.random()}).join(''); */}
+                    {/* make more random? use ._shuffle? */}
                     {this.props.playletters ?
-                        this.props.playletters
+                        this.props.playletters.split('').sort(function(){return 0.5-Math.random()}).join('')
                         : null}
                 </Segment>
                 <form onSubmit={this.handleGuess}>
