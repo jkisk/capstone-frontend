@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import {newGame} from '../actions/games'
+import { newGame } from '../actions/games'
 import { Input, Button, Segment } from 'semantic-ui-react'
 
 
@@ -18,6 +18,7 @@ class Game extends Component {
         }
     }
 
+
     handleChange = (e) => {
         this.setState({
             guess: e.target.value
@@ -30,18 +31,28 @@ class Game extends Component {
 
     }
 
+    requestNewGame = (e) => {
+        this.props.newGame(1)
+
+    }
+
 
 
     render() {
         return (
             <div>
-            <Segment>
-                {/* {this.props.playletters} */} playletters here
-            </Segment>
-            <form onSubmit={this.handleGuess}>
-                <Input type="text" onChange={this.handleChange} name="guess" placeholder='Guess Here' />
-                <Button basic color='pink' content='Enter' />
-            </form>
+                <Segment>
+                    {this.props.playletters ?
+                        this.props.playletters
+                        : null}
+                </Segment>
+                <form onSubmit={this.handleGuess}>
+                    <Input type="text" onChange={this.handleChange} name="guess" placeholder='Guess Here' />
+                    <Button basic color='pink' content='Enter' />
+                </form>
+                <Segment>
+                    <Button onClick={this.requestNewGame} basic color='orange' content='NEW GAME' />
+                </Segment>
             </div>
         )
     }
@@ -49,17 +60,16 @@ class Game extends Component {
 
 
 const mapStateToProps = state => ({
-    
-  })
-  
-  const mapDispatchToProps = dispatch => bindActionCreators({
-    
+    playletters: state.games.playletters
+})
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+
     newGame: newGame
-  
-  }, dispatch)
-  
-  export default connect(
+
+}, dispatch)
+
+export default connect(
     mapStateToProps,
     mapDispatchToProps
-  )(Game);
-  
+)(Game);
