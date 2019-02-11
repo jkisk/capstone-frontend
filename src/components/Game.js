@@ -32,7 +32,7 @@ class Game extends Component {
     }
 
     requestNewGame = (e) => {
-        this.props.newGame(1)
+        this.props.newGame(2)
 
     }
 
@@ -42,6 +42,7 @@ class Game extends Component {
         return (
             <div>
                 <Segment>
+                    {/* var shuffled = str.split('').sort(function(){return 0.5-Math.random()}).join(''); */}
                     {this.props.playletters ?
                         this.props.playletters
                         : null}
