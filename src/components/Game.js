@@ -27,6 +27,7 @@ class Game extends Component {
 
     handleGuess = (e) => {
         e.preventDefault()
+        
         const arr = this.props.validwords.validArr
         for (let ele of arr) {
             if (ele === this.state.guess.toLowerCase()) {

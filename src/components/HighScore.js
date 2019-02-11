@@ -1,9 +1,16 @@
 import React, { Component } from 'react'
 import { Table} from 'semantic-ui-react'
-import { connect } from 'react-redux'
+import { connect} from 'react-redux'
+import { bindActionCreators } from 'redux'
 import Score from './Score'
+import {getScores} from '../actions/scores'
 
 class HighScore extends Component {
+
+    componentDidMount() {
+        this.props.getScores()
+    }
+
     render() {
         return (
             <Table className="ui celled table">
@@ -13,7 +20,12 @@ class HighScore extends Component {
                         <Table.HeaderCell className="">Date</Table.HeaderCell>
                     </Table.Row ></Table.Header>
                 <Table.Body className="">
-                            {/* </Score> */}
+                           {
+                               this.props.highScores.map((score) => {
+                                return <Score keys={score.id} {...score}/>
+                               })
+
+                           } 
                 </Table.Body>
             </Table>
         )
@@ -21,12 +33,18 @@ class HighScore extends Component {
 }
 
 const mapStateToProps = state => ({
-
+    highScores: state.scores
 })
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+
+    getScores: getScores
+
+}, dispatch)
 
 
 
 export default connect(
     mapStateToProps,
-
+    mapDispatchToProps
 )(HighScore);
