@@ -58,7 +58,7 @@ class Game extends Component {
 
 
     requestNewGame = (e) => {
-        this.props.newGame(2)
+        this.props.newGame(Math.floor(Math.random() * (11 - 2 + 1)))
 
     }
 
@@ -70,6 +70,7 @@ class Game extends Component {
             four: [],
             five: [],
             six: [],
+            seven: []
         })
     }
 
