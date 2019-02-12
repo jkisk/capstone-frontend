@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { newGame } from '../actions/games'
-import { Input, Button, Segment, Header } from 'semantic-ui-react'
+import { Input, Button, Segment, Header, Transition } from 'semantic-ui-react'
+
+
 
 
 class Game extends Component {
@@ -14,7 +16,8 @@ class Game extends Component {
             four: [],
             five: [],
             six: [],
-            seven: []
+            seven: [],
+            visible: false
         }
     }
 
@@ -60,7 +63,22 @@ class Game extends Component {
     }
 
     scoreGame = (e) => {
+        console.log("scoring")
+        this.setState({
+            visible: false,
+            three: [],
+            four: [],
+            five: [],
+            six: [],
+        })
+    }
 
+    playGame = () => {
+        this.requestNewGame()
+        this.setState({
+            visible: true
+        })
+        setInterval(this.scoreGame, 60000)
     }
 
 
@@ -68,22 +86,23 @@ class Game extends Component {
         return (
             <div>
                 <Segment>
-                    <Header as='h1'>
-                        {/* make more random? use ._shuffle? */}
-                        {this.props.playletters ?
-                            this.props.playletters.split('').sort(function () { return 0.5 - Math.random() }).join('')
-                            : null}
-                    </Header>
+                    <Transition visible={this.state.visible} animation='scale' duration={500}>
+                        <Header as='h1'>
+                            {this.props.playletters ?
+                                this.props.playletters.split('').sort(function () { return 0.5 - Math.random() }).join('')
+                                : null}
+                        </Header>
+                    </Transition>
                 </Segment>
                 <form onSubmit={this.handleGuess}>
                     <Input type="text" onChange={this.handleChange} value={this.state.guess} name="guess" placeholder='Guess Here' />
                     <Button basic color='pink' content='Enter' />
                 </form>
                 <Segment>
-                    <Button onClick={this.requestNewGame} basic color='orange' content='NEW GAME' />
+                    <Button onClick={this.playGame} basic color='orange' content='NEW GAME' />
                 </Segment>
                 <Segment>
-                    <Button onClick={this.handleSubmit} basic color='teal' content='SCORE GAME' />
+                    <Button onClick={this.scoreGame} basic color='teal' content='SCORE GAME' />
                 </Segment>
                 <Segment>
                     <Header as='h2'>
