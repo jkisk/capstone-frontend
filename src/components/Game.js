@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { newGame } from '../actions/games'
 import { Input, Button, Segment, Header } from 'semantic-ui-react'
+// import moment from 'moment'
+import moment from 'moment-timer' 
 
 
 class Game extends Component {
@@ -63,6 +65,11 @@ class Game extends Component {
 
     }
 
+    playGame = () => {
+        let timer = new moment.duration(3000).timer({ start: true }, this.requestNewGame)
+        timer.stop()
+    }
+
 
     render() {
         return (
@@ -80,7 +87,7 @@ class Game extends Component {
                     <Button basic color='pink' content='Enter' />
                 </form>
                 <Segment>
-                    <Button onClick={this.requestNewGame} basic color='orange' content='NEW GAME' />
+                    <Button onClick={this.playGame} basic color='orange' content='NEW GAME' />
                 </Segment>
                 <Segment>
                     <Button onClick={this.handleSubmit} basic color='teal' content='SCORE GAME' />
