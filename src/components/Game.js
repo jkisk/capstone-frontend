@@ -3,8 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { newGame } from '../actions/games'
 import { Input, Button, Segment, Header } from 'semantic-ui-react'
-// import moment from 'moment'
-import moment from 'moment-timer' 
+
 
 
 class Game extends Component {
@@ -66,8 +65,7 @@ class Game extends Component {
     }
 
     playGame = () => {
-        let timer = new moment.duration(3000).timer({ start: true }, this.requestNewGame)
-        timer.stop()
+        
     }
 
 
