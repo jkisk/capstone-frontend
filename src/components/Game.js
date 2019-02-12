@@ -70,13 +70,15 @@ class Game extends Component {
             four: [],
             five: [],
             six: [],
-            seven: []
+            seven: [],
+            guess: ''
         })
     }
 
     playGame = () => {
         this.requestNewGame()
         this.setState({
+            guess: '',
             visible: true
         })
         setInterval(this.scoreGame, 60000)
@@ -96,7 +98,7 @@ class Game extends Component {
                     </Transition>
                 </Segment>
                 <form onSubmit={this.handleGuess}>
-                    <Input type="text" onChange={this.handleChange} value={this.state.guess} name="guess" placeholder='Guess Here' />
+                    <Input autoComplete='off' type="text" onChange={this.handleChange} value={this.state.guess} name="guess" placeholder='Guess Here' />
                     <Button basic color='pink' content='Enter' />
                 </form>
                 <Segment>
