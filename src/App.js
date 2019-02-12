@@ -4,14 +4,17 @@ import 'semantic-ui-css/semantic.min.css'
 import Login from './components/Login'
 import Game from './components/Game'
 import Signup from './components/Signup'
+import HighScore from './components/HighScore'
 import TopMenu from './components/TopMenu'
+
 
 class App extends Component {
   render() {
     return (
       <div className="App">
 
-        <Router>
+
+      </Router>
           <Fragment>
             <TopMenu />
             <Switch>
@@ -19,10 +22,10 @@ class App extends Component {
               <Route path='/login' component={Login} />
               <Route path='/play' component={Game} />
               <Route path='/signup' component={Signup} />
+              <Route path='/scores' component={HighScore} />
             </Switch>
           </Fragment>
         </Router>
-
       </div>
     );
   }
