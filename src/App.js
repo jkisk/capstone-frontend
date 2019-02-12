@@ -12,9 +12,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-
-
-      </Router>
+        <Router>
           <Fragment>
             <TopMenu />
             <Switch>
@@ -25,8 +23,8 @@ class App extends Component {
               <Route path='/scores' component={HighScore} />
             </Switch>
           </Fragment>
-        </Router>
-      </div>
+        </Router >
+      </div >
     );
   }
 }
