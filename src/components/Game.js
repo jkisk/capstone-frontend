@@ -56,7 +56,7 @@ class Game extends Component {
 
 
     requestNewGame = (e) => {
-        this.props.newGame(2)
+        this.props.newGame(3)
 
     }
 
@@ -75,7 +75,7 @@ class Game extends Component {
                         : null}
                 </Segment>
                 <form onSubmit={this.handleGuess}>
-                    <Input type="text" onChange={this.handleChange} name="guess" placeholder='Guess Here' />
+                    <Input type="text" onChange={this.handleChange} value={this.state.guess} name="guess" placeholder='Guess Here' />
                     <Button basic color='pink' content='Enter' />
                 </form>
                 <Segment>
