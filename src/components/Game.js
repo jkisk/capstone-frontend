@@ -61,11 +61,12 @@ class Game extends Component {
     }
 
     scoreGame = (e) => {
-
+        console.log("scoring")
     }
 
     playGame = () => {
-        
+        this.requestNewGame()
+        setInterval(this.scoreGame, 60000)
     }
 
 
