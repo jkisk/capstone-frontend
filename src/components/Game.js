@@ -66,12 +66,13 @@ class Game extends Component {
         console.log("scoring")
         this.setState({
             visible: false,
+            guess: '',
             three: [],
             four: [],
             five: [],
             six: [],
-            seven: [],
-            guess: ''
+            seven: []
+           
         })
     }
 
