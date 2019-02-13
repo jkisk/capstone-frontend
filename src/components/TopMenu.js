@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router'
 import { bindActionCreators } from 'redux';
-import { userLogout } from '../actions/auth'
+import { playerLogout } from '../actions/auth'
 
 
 class TopMenu extends Component {
@@ -22,27 +22,33 @@ class TopMenu extends Component {
     }
 
     handleLogout = () => {
-        this.props.userLogout(() => {
+        this.props.playerLogout(() => {
             localStorage.clear()
             this.props.history.push('/')
         })
     }
 
     render() {
-        console.log(this.props.user)
         return (
             <Menu>
 
-                <Button basic color='orange' content='Login' />
+                <Button basic color='orange'>
+                <Link to={'/login'} >Login to Save Score!</Link>
+                 </Button>
 
 
                 <Button onClick={this.handleLogout} basic color='orange' content='Logout' />
 
 
-                <Button basic color='orange' content='Create Player' />
+                <Button basic color='orange'>
+                <Link to={'/signup'} >Create Player</Link>
+                 </Button>
 
                 <Button basic color='teal'>
                     <Link to={'/scores'} >View High Scores</Link>
+                </Button>
+                <Button basic color='teal'>
+                    <Link to={'/play'} >Play Scramples</Link>
                 </Button>
 
 
@@ -68,7 +74,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => bindActionCreators({
 
-    userLogout: userLogout
+    playerLogout: playerLogout
 
 }, dispatch)
 

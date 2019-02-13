@@ -1,6 +1,6 @@
 export const SET_AUTHENTICATION = 'SET_AUTHENTICATION'
-export const USER_LOGIN_FAILED = 'USER_LOGIN_FAILED'
-export const USER_LOGOUT = 'USER_LOGOUT'
+export const PLAYER_LOGIN_FAILED = 'PLAYER_LOGIN_FAILED'
+export const PLAYER_LOGOUT = 'PLAYER_LOGOUT'
 
 export const setAuthentication = claim => ({
   type: SET_AUTHENTICATION,
@@ -8,13 +8,13 @@ export const setAuthentication = claim => ({
 })
 
 export const setLoginFail = claim => ({
-  type: USER_LOGIN_FAILED,
+  type: PLAYER_LOGIN_FAILED,
   payload: claim
 })
 
-export const userLogout = callback => {
+export const playerLogout = callback => {
   callback()
   return {
-    type: USER_LOGOUT
+    type: PLAYER_LOGOUT
   }
 }
