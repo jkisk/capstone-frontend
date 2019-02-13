@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { newGame } from '../actions/games'
+import {scoreGame} from '../actions/scores'
 import { Input, Button, Segment, Header, Transition } from 'semantic-ui-react'
 
 
@@ -62,8 +63,15 @@ class Game extends Component {
 
     }
 
-    scoreGame = (e) => {
-        console.log("scoring")
+    endGame = (e) => {
+        // tally results and send playerId and score
+        let score = (this.state.three.length * 10 + 
+        this.state.four.length * 20 + 
+        this.state.five.length * 30 +
+        this.state.six.length * 40+
+        this.state.seven.length * 50)
+            console.log(score)
+        this.props.scoreGame(this.props.playerId, score )
         this.setState({
             visible: false,
             guess: '',
@@ -82,7 +90,7 @@ class Game extends Component {
             guess: '',
             visible: true
         })
-        setInterval(this.scoreGame, 60000)
+        setTimeout(this.endGame, 60000)
     }
 
 
@@ -106,7 +114,7 @@ class Game extends Component {
                     <Button onClick={this.playGame} basic color='orange' content='NEW GAME' />
                 </Segment>
                 <Segment>
-                    <Button onClick={this.scoreGame} basic color='teal' content='SCORE GAME' />
+                    <Button onClick={this.endGame} basic color='teal' content='SCORE GAME' />
                 </Segment>
                 <Segment>
                     <Header as='h2'>
@@ -122,15 +130,17 @@ class Game extends Component {
     }
 }
 
-
+// fix hard coded player id
 const mapStateToProps = state => ({
     playletters: state.games.playletters,
-    validwords: state.games.validwords
+    validwords: state.games.validwords,
+    playerId: 1 
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
 
-    newGame: newGame
+    newGame: newGame,
+    scoreGame: scoreGame
 
 }, dispatch)
 
