@@ -5,6 +5,7 @@ import { newGame } from '../actions/games'
 import {scoreGame} from '../actions/scores'
 import { Input, Button, Segment, Header} from 'semantic-ui-react'
 import Playletters from './Playletters'
+import CurrentScore from './CurrentScore'
 
 
 
@@ -19,7 +20,8 @@ class Game extends Component {
             five: [],
             six: [],
             seven: [],
-            visible: false
+            visible: false,
+            xscore: 0
         }
     }
 
@@ -51,6 +53,9 @@ class Game extends Component {
                 if (ele.length === 7 && this.state.seven.indexOf(ele) === -1) {
                     this.state.seven.push(ele)
                 }
+                this.setState({
+                    xscore: this.state.xscore + (ele.length * 10)
+                })
             }
         }
         this.setState({
@@ -65,14 +70,7 @@ class Game extends Component {
     }
 
     endGame = (e) => {
-        // tally results and send playerId and score
-        let score = (this.state.three.length * 10 + 
-        this.state.four.length * 20 + 
-        this.state.five.length * 30 +
-        this.state.six.length * 40+
-        this.state.seven.length * 50)
-            console.log(score)
-        this.props.scoreGame(this.props.playerId, score )
+        this.props.scoreGame(this.props.playerId, this.state.xscore )
         this.setState({
             visible: false,
             guess: '',
@@ -80,8 +78,8 @@ class Game extends Component {
             four: [],
             five: [],
             six: [],
-            seven: []
-           
+            seven: [],
+            xscore: 0
         })
     }
 
@@ -100,7 +98,7 @@ class Game extends Component {
     render() {
         return (
             <div>
-               
+               <CurrentScore visible={this.state.visible} xscore={this.state.xscore}/>
                 <Playletters  visible={this.state.visible}/>
         
                 
