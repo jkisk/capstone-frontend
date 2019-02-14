@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { newGame } from '../actions/games'
 import {scoreGame} from '../actions/scores'
-import { Input, Button, Segment, Header, Transition } from 'semantic-ui-react'
+import { Input, Button, Segment, Header} from 'semantic-ui-react'
+import Playletters from './Playletters'
 
 
 
@@ -90,22 +91,19 @@ class Game extends Component {
             guess: '',
             visible: true
         })
+
         setTimeout(this.endGame, 60000)
+        
     }
 
 
     render() {
         return (
             <div>
-                <Segment>
-                    <Transition visible={this.state.visible} animation='scale' duration={500}>
-                        <Header as='h1'>
-                            {this.props.playletters ?
-                                this.props.playletters.split('').sort(function () { return 0.5 - Math.random() }).join('')
-                                : null}
-                        </Header>
-                    </Transition>
-                </Segment>
+               
+                <Playletters  visible={this.state.visible}/>
+        
+                
                 <form onSubmit={this.handleGuess}>
                     <Input autoComplete='off' type="text" onChange={this.handleChange} value={this.state.guess} name="guess" placeholder='Guess Here' />
                     <Button basic color='pink' content='Enter' />
