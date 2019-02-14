@@ -3,17 +3,17 @@ import {Transition, Header} from 'semantic-ui-react'
 import {connect} from 'react-redux'
 
 
-class CurrentScore extends Component {
-
-
+class TimeRemaining extends Component {
 
     render() {
         return (
+            
                 <Transition visible={this.props.visible} animation='scale' duration={500}>
                     <Header as='h3'>
-                        Score = {this.props.xscore} 
+                        Time Remaining = {this.props.time} 
                     </Header>
                 </Transition>
+        
         )
     }
 }
@@ -30,4 +30,4 @@ const mapStateToProps = state => ({
 export default connect(
     mapStateToProps,
     // mapDispatchToProps
-)(CurrentScore);
+)(TimeRemaining);

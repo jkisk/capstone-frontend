@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { createPlayer } from '../actions/players';
-import { Input, Button } from 'semantic-ui-react'
-
+import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
 
 
 class SignUp extends Component {
@@ -24,33 +24,82 @@ class SignUp extends Component {
     }
 
     handleSubmit = (e) => {
+        console.log("submitting")
         e.preventDefault()
-        if (!this.state.playername || !this.state.password || !this.state.matchPassword){
-            this.setState({showErrorMessage: true})
+        if (!this.state.playername || !this.state.password || !this.state.matchPassword) {
+            this.setState({ showErrorMessage: true })
         }
         else if (this.state.password === this.state.matchPassword) {
-            this.props.createPlayer({ 
+            this.props.createPlayer({
                 playername: this.state.playername, password: this.state.password
-            }, () => { this.props.history.push('/signin') })
+            }, () => { this.props.history.push('/login') })
         }
-        else if (this.state.password === this.state.matchPassword){
-            this.setState({showErrorMessage: true})
+        else if (this.state.password === this.state.matchPassword) {
+            this.setState({ showErrorMessage: true })
         }
     }
 
     closeErrorMessage = (e) => {
         e.preventDefault()
-        this.setState({showErrorMessage: false})
+        this.setState({ showErrorMessage: false })
     }
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-                <Input type="text" onChange={this.handleChange} name="playername" placeholder='Player Name' />
-                <Input type="text" onChange={this.handleChange} name="password" placeholder='Password' />
-                <Input type="text" onChange={this.handleChange} name="matchPassword" placeholder='please retype Password' />
-                <Button basic color='teal' content='Create' />
-            </form>
+            <div className='login-form'>
+
+                <style>{`
+      body > div,
+      body > div > div,
+      body > div > div > div.login-form {
+        height: 100%;
+      }
+    `}</style>
+                <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
+                    <Grid.Column style={{ maxWidth: 450 }}>
+                        <Header as='h2' color='orange' textAlign='center'>
+                            <Image src='/logo.png' /> Create your account
+        </Header>
+                        <Form size='large' onSubmit={this.handleSubmit}>
+                            <Segment stacked>
+                                <Form.Input onChange={this.handleChange} name="playername" fluid icon='user' iconPosition='left' placeholder='Player Name' />
+                                <Form.Input
+                                    onChange={this.handleChange}
+                                    name="password"
+                                    fluid
+                                    icon='lock'
+                                    iconPosition='left'
+                                    placeholder='Password'
+                                    type='password'
+                                />
+                                <Form.Input
+                                    onChange={this.handleChange}
+                                    name="matchpassword"
+                                    fluid
+                                    icon='lock'
+                                    iconPosition='left'
+                                    placeholder='Retype Password'
+                                    type='password'
+                                />
+
+                                <Button color='pink' fluid size='large'>
+                                    Sign Up!
+            </Button>
+                            </Segment>
+                        </Form>
+                        <Message>
+                            Already have an account? <Link to='/login'>Log In</Link>
+                        </Message>
+                    </Grid.Column>
+                </Grid>
+            </div>
+
+            // <form onSubmit={this.handleSubmit}>
+            //     <Input type="text" onChange={this.handleChange} name="playername" placeholder='Player Name' />
+            //     <Input type="text" onChange={this.handleChange} name="password" placeholder='Password' />
+            //     <Input type="text" onChange={this.handleChange} name="matchPassword" placeholder='please retype Password' />
+            //     <Button basic color='teal' content='Create' />
+            // </form>
         )
     }
 }
