@@ -1,4 +1,5 @@
 import React from 'react'
+import Moment from 'react-moment'
 
 
 export default function Score({score, playername, created_at}) {
@@ -6,7 +7,7 @@ export default function Score({score, playername, created_at}) {
         <tr className="">
             <td className="">{score}</td>
             <td className="">{playername}</td>
-            <td className="">{created_at}</td>
+            <td className=""><Moment fromNow>{created_at}</Moment></td>
         </tr>
     )
 }

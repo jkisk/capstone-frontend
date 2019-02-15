@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import { Table} from 'semantic-ui-react'
-import { connect} from 'react-redux'
+import { Table } from 'semantic-ui-react'
+import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import Score from './Score'
-import {getScores} from '../actions/scores'
+import { getScores } from '../actions/scores'
 
 class HighScore extends Component {
 
@@ -20,12 +20,12 @@ class HighScore extends Component {
                         <Table.HeaderCell className="">Date</Table.HeaderCell>
                     </Table.Row ></Table.Header>
                 <Table.Body className="">
-                           {
-                               this.props.highScores.map((score) => {
-                                return <Score keys={score.id} {...score}/>
-                               })
+                    {
+                        this.props.highScores.map((score) => {
+                            return <Score key={score.id} {...score} />
+                        })
 
-                           } 
+                    }
                 </Table.Body>
             </Table>
         )
