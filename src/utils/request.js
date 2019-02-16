@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseURL = 'https://morning-ridge-35434.herokuapp.com'
+const baseURL = process.env.REACT_APP_API
 
 const request = (path, method = 'get', body = null) => {
 
