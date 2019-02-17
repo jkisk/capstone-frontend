@@ -23,7 +23,7 @@ class Game extends Component {
             seven: [],
             visible: false,
             xscore: 0,
-            time: 60,
+            time: 30,
         }
     }
 
@@ -73,11 +73,13 @@ class Game extends Component {
 
     requestNewGame = (e) => {
         this.props.newGame(Math.floor(Math.random() * (22 - 2 + 1)))
-    
+
     }
 
     endGame = (e) => {
-        this.props.scoreGame(this.props.playerId, this.state.xscore)
+        if (this.props.playerId.id) {
+            this.props.scoreGame(this.props.playerId.id, this.state.xscore)
+        }
         clearTimeout(this.state.timeout)
         clearInterval(this.state.interval)
         this.setState({
@@ -89,7 +91,7 @@ class Game extends Component {
             six: [],
             seven: [],
             xscore: 0,
-            time: 60
+            time: 30
         })
     }
 
@@ -110,8 +112,8 @@ class Game extends Component {
             guess: '',
             visible: true
         })
-       let interval = setInterval(this.timer, 1000)
-        let timeout = setTimeout(this.endGame, 60000)
+        let interval = setInterval(this.timer, 1000)
+        let timeout = setTimeout(this.endGame, 30000)
         this.setState({
             interval: interval,
             timeout: timeout
@@ -124,10 +126,10 @@ class Game extends Component {
     render() {
         return (
             <div>
-                
+
                 <CurrentScore visible={this.state.visible} xscore={this.state.xscore} />
                 <TimeRemaining visible={this.state.visible} time={this.state.time} />
-              
+
                 <Playletters visible={this.state.visible} />
 
 
@@ -153,11 +155,11 @@ class Game extends Component {
     }
 }
 
-// fix hard coded player id
+
 const mapStateToProps = state => ({
     playletters: state.games.playletters,
     validwords: state.games.validwords,
-    playerId: 4
+    playerId: state.auth.player
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
