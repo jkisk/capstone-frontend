@@ -24,17 +24,14 @@ class SignUp extends Component {
     }
 
     handleSubmit = (e) => {
-        console.log("submitting")
         e.preventDefault()
         if (!this.state.playername || !this.state.password || !this.state.matchPassword) {
             this.setState({ showErrorMessage: true })
         }
         else if (this.state.password === this.state.matchPassword) {
-            this.props.createPlayer({
-                playername: this.state.playername, password: this.state.password
-            }, () => { this.props.history.push('/login') })
+            this.props.createPlayer({playername: this.state.playername, password: this.state.password}, () => { this.props.history.push('/login') })
         }
-        else if (this.state.password === this.state.matchPassword) {
+        else if (this.state.password !== this.state.matchPassword) {
             this.setState({ showErrorMessage: true })
         }
     }
@@ -62,7 +59,12 @@ class SignUp extends Component {
         </Header>
                         <Form size='large' onSubmit={this.handleSubmit}>
                             <Segment stacked>
-                                <Form.Input onChange={this.handleChange} name="playername" fluid icon='user' iconPosition='left' placeholder='Player Name' />
+                                <Form.Input
+                                    onChange={this.handleChange}
+                                    name="playername"
+                                    fluid icon='user'
+                                    iconPosition='left'
+                                    placeholder='Player Name' />
                                 <Form.Input
                                     onChange={this.handleChange}
                                     name="password"
@@ -74,7 +76,7 @@ class SignUp extends Component {
                                 />
                                 <Form.Input
                                     onChange={this.handleChange}
-                                    name="matchpassword"
+                                    name="matchPassword"
                                     fluid
                                     icon='lock'
                                     iconPosition='left'
@@ -87,27 +89,28 @@ class SignUp extends Component {
             </Button>
                             </Segment>
                         </Form>
+
+                        {this.state.showErrorMessage ? (
+                            <Message>
+                                All fields required and passwords must match
+                                <Button color='pink' onClick={this.closeErrorMessage}>
+                                    close help message
+                                </Button>
+                            </Message>
+                        ) : null}
                         <Message>
                             Already have an account? <Link to='/login'>Log In</Link>
                         </Message>
                     </Grid.Column>
                 </Grid>
             </div>
-
-            // <form onSubmit={this.handleSubmit}>
-            //     <Input type="text" onChange={this.handleChange} name="playername" placeholder='Player Name' />
-            //     <Input type="text" onChange={this.handleChange} name="password" placeholder='Password' />
-            //     <Input type="text" onChange={this.handleChange} name="matchPassword" placeholder='please retype Password' />
-            //     <Button basic color='teal' content='Create' />
-            // </form>
         )
     }
 }
 
 const mapStateToProps = state => ({
-
+   
 })
-
 const mapDispatchToProps = dispatch => bindActionCreators({
     createPlayer: createPlayer
 

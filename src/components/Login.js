@@ -62,7 +62,7 @@ class Login extends Component {
                 <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
                     <Grid.Column style={{ maxWidth: 450 }}>
                         <Header as='h2' color='orange' textAlign='center'>
-                            <Image src='/logo.png' /> Log-in to your account
+                            <Image src='/logo.png' /> Login to your account
         </Header>
                         <Form size='large' onSubmit={this.handleSubmit}>
                             <Segment stacked>

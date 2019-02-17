@@ -157,7 +157,7 @@ class Game extends Component {
 const mapStateToProps = state => ({
     playletters: state.games.playletters,
     validwords: state.games.validwords,
-    playerId: 1
+    playerId: 4
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
