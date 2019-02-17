@@ -72,8 +72,8 @@ class Game extends Component {
 
 
     requestNewGame = (e) => {
-        // this.props.newGame(Math.floor(Math.random() * (11 - 2 + 1)))
-        this.props.newGame(1)
+        this.props.newGame(Math.floor(Math.random() * (22 - 2 + 1)))
+    
     }
 
     endGame = (e) => {
