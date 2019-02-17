@@ -7,6 +7,7 @@ import { Input, Button, Segment, Header } from 'semantic-ui-react'
 import Playletters from './Playletters'
 import CurrentScore from './CurrentScore'
 import TimeRemaining from './TimeRemaining'
+import PostGame from './PostGame'
 
 
 
@@ -24,6 +25,7 @@ class Game extends Component {
             visible: false,
             xscore: 0,
             time: 30,
+            isEnd: false
         }
     }
 
@@ -90,7 +92,7 @@ class Game extends Component {
             five: [],
             six: [],
             seven: [],
-            xscore: 0,
+            isEnd: true,
             time: 30
         })
     }
@@ -110,7 +112,9 @@ class Game extends Component {
         this.requestNewGame()
         this.setState({
             guess: '',
-            visible: true
+            isEnd: false,
+            visible: true,
+            xscore: 0
         })
         let interval = setInterval(this.timer, 1000)
         let timeout = setTimeout(this.endGame, 30000)
@@ -131,7 +135,7 @@ class Game extends Component {
                 <TimeRemaining visible={this.state.visible} time={this.state.time} />
 
                 <Playletters visible={this.state.visible} />
-
+                <PostGame isEnd={this.state.isEnd} score={this.state.xscore} play={() => this.playGame()} />
 
                 <form onSubmit={this.handleGuess}>
                     <Input autoComplete='off' type="text" onChange={this.handleChange} value={this.state.guess} name="guess" placeholder='Guess Here' />
