@@ -1,6 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 import 'semantic-ui-css/semantic.min.css'
+import request from './utils/request'
+import {setAuthentication} from './actions/auth'
 import Login from './components/Login'
 import Game from './components/Game'
 import Signup from './components/Signup'
@@ -9,6 +13,11 @@ import TopMenu from './components/TopMenu'
 
 
 class App extends Component {
+  componentDidMount() {
+    request('/login')
+      .then(response => this.props.setAuthentication(response.data))
+      .catch(err => this.props.setAuthentication(null))
+  }
   render() {
     return (
       <div className="App">
@@ -29,4 +38,12 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({
+    setAuthentication: setAuthentication
+  }, dispatch)
+
+export default connect(null, mapDispatchToProps)(App)
+
+
+
