@@ -17,6 +17,15 @@ code {
   text-align: center;
   font-family: "Open Sans";
   font-size: calc(15px + 2vmin);
+  background-color: #f2ccbf;
+}
+
+.Game {
+  background-color: #f2ccbf;
+}
+
+.custom {
+  background-color: #edbdd0;
 }
 
 

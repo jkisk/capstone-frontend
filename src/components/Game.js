@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { newGame } from '../actions/games'
 import { scoreGame } from '../actions/scores'
-import { Input, Button, Segment, Header } from 'semantic-ui-react'
+import { Input, Button, Transition, Header } from 'semantic-ui-react'
 import Playletters from './Playletters'
 import CurrentScore from './CurrentScore'
 import TimeRemaining from './TimeRemaining'
@@ -136,25 +136,26 @@ class Game extends Component {
 
                 <Playletters visible={this.state.visible} />
                 <PostGame isEnd={this.state.isEnd} score={this.state.xscore} play={() => this.playGame()} />
+                <Transition visible={this.state.visible} animation='scale' duration={500}>
+                    <form onSubmit={this.handleGuess}>
+                        <Input autoFocus={true} autoComplete='off' type="text" onChange={this.handleChange} value={this.state.guess} name="guess" placeholder='Guess Here' />
+                        *<Button basic color='pink' content='Enter' />
+                    </form>
+                </Transition>
+                <br />
+                <Button onClick={this.playGame} basic color='pink'  content='NEW GAME' />
 
-                <form onSubmit={this.handleGuess}>
-                    <Input autoComplete='off' type="text" onChange={this.handleChange} value={this.state.guess} name="guess" placeholder='Guess Here' />
-                    <Button basic color='pink' content='Enter' />
-                </form>
-                <Segment>
-                    <Button onClick={this.playGame} basic color='orange' content='NEW GAME' />
-                    <Button onClick={this.endGame} basic color='teal' content='SCORE GAME' />
-                </Segment>
-                <Segment>
-                    <Header as='h2'>
-                        {this.state.three.map((ele) => { return ele + ' ' })}
-                        {this.state.four.map((ele) => { return ele + ' ' })}
-                        {this.state.five.map((ele) => { return ele + ' ' })}
-                        {this.state.six.map((ele) => { return ele + ' ' })}
-                        {this.state.seven.map((ele) => { return ele + ' ' })}
-                    </Header>
-                </Segment>
-            </div>
+
+
+                <Header as='h2'>
+                    {this.state.three.sort().map((ele) => { return ele + ' ' })}
+                    {this.state.four.sort().map((ele) => { return ele + ' ' })}
+                    {this.state.five.sort().map((ele) => { return ele + ' ' })}
+                    {this.state.six.sort().map((ele) => { return ele + ' ' })}
+                    {this.state.seven.sort().map((ele) => { return ele + ' ' })}
+                </Header>
+
+            </div >
         )
     }
 }

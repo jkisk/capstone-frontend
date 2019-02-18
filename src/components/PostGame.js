@@ -11,6 +11,7 @@ class PostGame extends Component {
                 <Transition visible={this.props.isEnd} animation='scale' duration={500}>
                     <Message>
                         Game Over!  You scored {this.props.score} points
+                        <br/>
                         {/* Your All Time High is {} */}
                         <Button onClick={this.props.play} basic color='orange' content='PLAY AGAIN' />
                     </Message>
