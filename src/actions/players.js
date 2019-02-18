@@ -11,3 +11,4 @@ export const createPlayer = (playerObj, callback) => {
     .catch(err => console.log(err))
   }
 }
+
