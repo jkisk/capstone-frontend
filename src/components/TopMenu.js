@@ -33,19 +33,19 @@ class TopMenu extends Component {
             <Menu className="TopMenu">
                 <Button.Group widths="4">
                     {!this.props.player ?
-                        <Button>
+                        <Button className="menu-btn">
                             <Link to={'/login'} >Login to Save Score!</Link>
                         </Button>
                         :
-                        <Button onClick={this.handleLogout} content='Logout' />
+                        <Button className="menu-btn" onClick={this.handleLogout} content='Logout' />
                     }
-                    <Button>
+                    <Button className="menu-btn">
                         <Link to={'/play'} >Play Scramples</Link>
                     </Button>
-                    <Button >
+                    <Button className="menu-btn">
                         <Link to={'/scores'} >View High Scores</Link>
                     </Button>
-                    <Button >
+                    <Button className="menu-btn">
                         <Link to={'/signup'} >Create Player</Link>
                     </Button>
                     
