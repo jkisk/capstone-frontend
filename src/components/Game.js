@@ -25,7 +25,8 @@ class Game extends Component {
             visible: false,
             xscore: 0,
             time: 30,
-            isEnd: false
+            isEnd: false,
+            count: 0
         }
     }
 
@@ -43,32 +44,38 @@ class Game extends Component {
 
     handleGuess = (e) => {
         e.preventDefault()
-
+        let letterCount = 0
         const arr = this.props.validwords.validArr
         for (let ele of arr) {
             if (ele === this.state.guess.toLowerCase()) {
                 if (ele.length === 3 && this.state.three.indexOf(ele) === -1) {
                     this.state.three.push(ele)
+                    letterCount += ele.length
                 }
                 if (ele.length === 4 && this.state.four.indexOf(ele) === -1) {
                     this.state.four.push(ele)
+                    letterCount += ele.length
                 }
                 if (ele.length === 5 && this.state.five.indexOf(ele) === -1) {
                     this.state.five.push(ele)
+                    letterCount += ele.length
                 }
                 if (ele.length === 6 && this.state.six.indexOf(ele) === -1) {
                     this.state.six.push(ele)
+                    letterCount += ele.length
                 }
                 if (ele.length === 7 && this.state.seven.indexOf(ele) === -1) {
                     this.state.seven.push(ele)
+                    letterCount += ele.length
                 }
                 this.setState({
-                    xscore: this.state.xscore + (ele.length * 10)
+                    xscore: this.state.xscore + (ele.length * 15)
                 })
             }
         }
         this.setState({
-            guess: ''
+            guess: '',
+            count: this.state.count + letterCount
         })
     }
 
@@ -114,7 +121,8 @@ class Game extends Component {
             guess: '',
             isEnd: false,
             visible: true,
-            xscore: 0
+            xscore: 0,
+            count: 0
         })
         let interval = setInterval(this.timer, 1000)
         let timeout = setTimeout(this.endGame, 30000)
@@ -135,7 +143,7 @@ class Game extends Component {
                 <TimeRemaining visible={this.state.visible} time={this.state.time} />
 
                 <Playletters visible={this.state.visible} />
-                <PostGame isEnd={this.state.isEnd} score={this.state.xscore} play={() => this.playGame()} />
+                <PostGame isEnd={this.state.isEnd} score={this.state.xscore} count={this.state.count} play={() => this.playGame()} />
                 <Transition visible={this.state.visible} animation='scale' duration={500}>
                     <form onSubmit={this.handleGuess}>
                         <Input autoFocus={true} autoComplete='off' type="text" onChange={this.handleChange} value={this.state.guess} name="guess" placeholder='Guess Here' />
