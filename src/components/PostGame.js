@@ -14,7 +14,7 @@ class PostGame extends Component {
                         <br/>
                         You typed {this.props.count} valid letters
                         <br/>
-                        <Button onClick={this.props.play} basic color='orange' content='PLAY AGAIN' />
+                        <Button onClick={this.props.play} content='PLAY AGAIN' />
                     </Message>
                 </Transition>
         

@@ -31,26 +31,25 @@ class TopMenu extends Component {
     render() {
         return (
             <Menu className="TopMenu">
-                {!this.props.player ?
-                    <Button basic color='orange'>
-                        <Link to={'/login'} >Login to Save Score!</Link>
+                <Button.Group widths="4">
+                    {!this.props.player ?
+                        <Button>
+                            <Link to={'/login'} >Login to Save Score!</Link>
+                        </Button>
+                        :
+                        <Button onClick={this.handleLogout} content='Logout' />
+                    }
+                    <Button>
+                        <Link to={'/play'} >Play Scramples</Link>
                     </Button>
-
-                    :
-                    <Button onClick={this.handleLogout} basic color='orange' content='Logout' />
-                }
-
-                <Button basic color='pink'>
-                    <Link to={'/signup'} >Create Player</Link>
-                </Button>
-
-                <Button basic color='teal'>
-                    <Link to={'/scores'} >View High Scores</Link>
-                </Button>
-                <Button basic color='teal'>
-                    <Link to={'/play'} >Play Scramples</Link>
-                </Button>
-
+                    <Button >
+                        <Link to={'/scores'} >View High Scores</Link>
+                    </Button>
+                    <Button >
+                        <Link to={'/signup'} >Create Player</Link>
+                    </Button>
+                    
+                </Button.Group>
             </Menu >
         )
     }
