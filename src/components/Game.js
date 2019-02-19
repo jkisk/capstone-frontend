@@ -26,7 +26,8 @@ class Game extends Component {
             xscore: 0,
             time: 30,
             isEnd: false,
-            count: 0
+            count: 0,
+            invalid: false
         }
     }
 
@@ -38,44 +39,50 @@ class Game extends Component {
 
     handleChange = (e) => {
         this.setState({
-            guess: e.target.value
+            guess: e.target.value,
+            invalid: false
         })
     }
 
     handleGuess = (e) => {
         e.preventDefault()
         let letterCount = 0
+        const entry = this.state.guess.toLowerCase()
         const arr = this.props.validwords.validArr
-        for (let ele of arr) {
-            if (ele === this.state.guess.toLowerCase()) {
-                if (ele.length === 3 && this.state.three.indexOf(ele) === -1) {
-                    this.state.three.push(ele)
-                    letterCount += ele.length
-                }
-                if (ele.length === 4 && this.state.four.indexOf(ele) === -1) {
-                    this.state.four.push(ele)
-                    letterCount += ele.length
-                }
-                if (ele.length === 5 && this.state.five.indexOf(ele) === -1) {
-                    this.state.five.push(ele)
-                    letterCount += ele.length
-                }
-                if (ele.length === 6 && this.state.six.indexOf(ele) === -1) {
-                    this.state.six.push(ele)
-                    letterCount += ele.length
-                }
-                if (ele.length === 7 && this.state.seven.indexOf(ele) === -1) {
-                    this.state.seven.push(ele)
-                    letterCount += ele.length
-                }
-                this.setState({
-                    xscore: this.state.xscore + (ele.length * 15)
-                })
+        if (arr.indexOf(entry) !== -1) {
+            if (entry.length === 3 && this.state.three.indexOf(entry) === -1) {
+                this.state.three.push(entry)
+                letterCount += entry.length
             }
+            if (entry.length === 4 && this.state.four.indexOf(entry) === -1) {
+                this.state.four.push(entry)
+                letterCount += entry.length
+            }
+            if (entry.length === 5 && this.state.five.indexOf(entry) === -1) {
+                this.state.five.push(entry)
+                letterCount += entry.length
+            }
+            if (entry.length === 6 && this.state.six.indexOf(entry) === -1) {
+                this.state.six.push(entry)
+                letterCount += entry.length
+            }
+            if (entry.length === 7 && this.state.seven.indexOf(entry) === -1) {
+                this.state.seven.push(entry)
+                letterCount += entry.length
+            }
+            this.setState({
+                xscore: this.state.xscore + (entry.length * 15)
+            })
         }
+        else {
+            this.setState({
+                invalid: true
+            })
+        }
+
         this.setState({
             guess: '',
-            count: this.state.count + letterCount
+            count: this.state.count + letterCount,
         })
     }
 
@@ -137,7 +144,7 @@ class Game extends Component {
 
     render() {
         return (
-            <div>
+            <div className='Game'>
 
                 <CurrentScore visible={this.state.visible} xscore={this.state.xscore} />
                 <TimeRemaining visible={this.state.visible} time={this.state.time} />
@@ -146,12 +153,12 @@ class Game extends Component {
                 <PostGame isEnd={this.state.isEnd} score={this.state.xscore} count={this.state.count} play={() => this.playGame()} />
                 <Transition visible={this.state.visible} animation='scale' duration={500}>
                     <form onSubmit={this.handleGuess}>
-                        <Input autoFocus={true} autoComplete='off' type="text" onChange={this.handleChange} value={this.state.guess} name="guess" placeholder='Guess Here' />
+                        <Input autoFocus={true} error={this.state.invalid} autoComplete='off' type="text" onChange={this.handleChange} value={this.state.guess} name="guess" placeholder='Guess Here' />
                         *<Button basic color='pink' content='Enter' />
                     </form>
                 </Transition>
                 <br />
-                <Button onClick={this.playGame} basic color='pink'  content='NEW GAME' />
+                <Button onClick={this.playGame} basic color='pink' content='NEW GAME' />
 
 
 

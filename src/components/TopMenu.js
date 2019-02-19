@@ -30,7 +30,7 @@ class TopMenu extends Component {
 
     render() {
         return (
-            <Menu>
+            <Menu className="TopMenu">
                 {!this.props.player ?
                     <Button basic color='orange'>
                         <Link to={'/login'} >Login to Save Score!</Link>
@@ -40,7 +40,7 @@ class TopMenu extends Component {
                     <Button onClick={this.handleLogout} basic color='orange' content='Logout' />
                 }
 
-                <Button basic color='orange'>
+                <Button basic color='pink'>
                     <Link to={'/signup'} >Create Player</Link>
                 </Button>
 
@@ -50,9 +50,6 @@ class TopMenu extends Component {
                 <Button basic color='teal'>
                     <Link to={'/play'} >Play Scramples</Link>
                 </Button>
-
-
-
 
             </Menu >
         )
