@@ -12,7 +12,8 @@ class PostGame extends Component {
                     <Message>
                         Game Over!  You scored {this.props.score} points
                         <br/>
-                        {/* Your All Time High is {} */}
+                        You typed {this.props.count} valid letters
+                        <br/>
                         <Button onClick={this.props.play} basic color='orange' content='PLAY AGAIN' />
                     </Message>
                 </Transition>
@@ -22,7 +23,7 @@ class PostGame extends Component {
 }
 
 const mapStateToProps = state => ({
-
+    
 })
 
 
