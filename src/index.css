@@ -27,7 +27,11 @@
 
 .TopMenu {
   background-color:  #f2ccbf;
-  opacity: 100;
+  opacity: 30;
+}
+
+.menu-btn {
+  background-color: #edbdd0;
 }
 
 /* 

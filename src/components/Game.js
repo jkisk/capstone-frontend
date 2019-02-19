@@ -154,11 +154,11 @@ class Game extends Component {
                 <Transition visible={this.state.visible} animation='scale' duration={500}>
                     <form onSubmit={this.handleGuess}>
                         <Input autoFocus={true} error={this.state.invalid} autoComplete='off' type="text" onChange={this.handleChange} value={this.state.guess} name="guess" placeholder='Guess Here' />
-                        *<Button basic color='pink' content='Enter' />
+                        <Button content='Enter' />
                     </form>
                 </Transition>
                 <br />
-                <Button onClick={this.playGame} basic color='pink' content='NEW GAME' />
+                <Button onClick={this.playGame} content='NEW GAME' />
 
 
 
