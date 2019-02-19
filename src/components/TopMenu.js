@@ -31,18 +31,18 @@ class TopMenu extends Component {
     render() {
         return (
             <Menu>
+                {!this.props.player ?
+                    <Button basic color='orange'>
+                        <Link to={'/login'} >Login to Save Score!</Link>
+                    </Button>
+
+                    :
+                    <Button onClick={this.handleLogout} basic color='orange' content='Logout' />
+                }
 
                 <Button basic color='orange'>
-                <Link to={'/login'} >Login to Save Score!</Link>
-                 </Button>
-
-
-                <Button onClick={this.handleLogout} basic color='orange' content='Logout' />
-
-
-                <Button basic color='orange'>
-                <Link to={'/signup'} >Create Player</Link>
-                 </Button>
+                    <Link to={'/signup'} >Create Player</Link>
+                </Button>
 
                 <Button basic color='teal'>
                     <Link to={'/scores'} >View High Scores</Link>
@@ -69,7 +69,7 @@ class TopMenu extends Component {
 
 
 const mapStateToProps = state => ({
-
+    player: state.auth.player
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
