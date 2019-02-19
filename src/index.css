@@ -24,8 +24,9 @@ code {
   background-color: #f2ccbf;
 }
 
-.custom {
+.TopMenu {
   background-color: #edbdd0;
+  opacity: 0;
 }
 
 
