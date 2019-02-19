@@ -3,11 +3,12 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { newGame } from '../actions/games'
 import { scoreGame } from '../actions/scores'
-import { Input, Button, Transition, Header } from 'semantic-ui-react'
+import { Input, Button, Header, Form } from 'semantic-ui-react'
 import Playletters from './Playletters'
 import CurrentScore from './CurrentScore'
 import TimeRemaining from './TimeRemaining'
 import PostGame from './PostGame'
+import Help from './Help'
 
 
 
@@ -27,7 +28,8 @@ class Game extends Component {
             time: 30,
             isEnd: false,
             count: 0,
-            invalid: false
+            invalid: false,
+            help: false
         }
     }
 
@@ -86,7 +88,6 @@ class Game extends Component {
         })
     }
 
-
     requestNewGame = (e) => {
         this.props.newGame(Math.floor(Math.random() * (22 - 2 + 1)))
 
@@ -122,6 +123,7 @@ class Game extends Component {
     }
 
     playGame = () => {
+        this.focus()
         this.endGame()
         this.requestNewGame()
         this.setState({
@@ -140,6 +142,19 @@ class Game extends Component {
 
 
     }
+    handleRef = (element) => {
+        this.inputRef = element
+        console.log(this);
+
+    }
+
+    focus = () => {
+        this.inputRef.focus()
+    }
+
+    toggleHelp = () => {
+        this.state.help? this.setState({help: false}) : this.setState({help: true})
+    }
 
 
     render() {
@@ -151,12 +166,12 @@ class Game extends Component {
 
                 <Playletters visible={this.state.visible} />
                 <PostGame isEnd={this.state.isEnd} score={this.state.xscore} count={this.state.count} play={() => this.playGame()} />
-                <Transition visible={this.state.visible} animation='scale' duration={500}>
-                    <form onSubmit={this.handleGuess}>
-                        <Input autoFocus={true} error={this.state.invalid} autoComplete='off' type="text" onChange={this.handleChange} value={this.state.guess} name="guess" placeholder='Guess Here' />
+                
+                    <Form onSubmit={this.handleGuess}>
+                        <Input ref={this.handleRef} error={this.state.invalid} autoComplete='off' type="text" onChange={this.handleChange} value={this.state.guess} name="guess" placeholder='Guess Here' />
                         <Button content='Enter' />
-                    </form>
-                </Transition>
+                    </Form>
+                
                 <br />
                 <Button onClick={this.playGame} content='NEW GAME' />
 
@@ -169,7 +184,10 @@ class Game extends Component {
                     {this.state.six.sort().map((ele) => { return ele + ' ' })}
                     {this.state.seven.sort().map((ele) => { return ele + ' ' })}
                 </Header>
-
+                <Button onClick={this.toggleHelp} content="Instructions" />
+                {this.state.help?
+                    <Help/>
+                : null}
             </div >
         )
     }

@@ -15,7 +15,7 @@
 
 .App {
   text-align: center;
-  font-family: "Open Sans";
+  font-family: "Open Sans" !important;
   font-size: calc(15px + 2vmin);
   background-color: #f2ccbf;
   min-height: 100vh;
@@ -31,8 +31,10 @@
 }
 
 .menu-btn {
-  background-color: #edbdd0;
+  background-color: #edbdd0 !important;
+  outline: 5px, solid, #e37759 !important;
 }
+
 
 /* 
 .App-header {
