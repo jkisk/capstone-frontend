@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {Transition, Header} from 'semantic-ui-react'
 import {connect} from 'react-redux'
+import Letter from './Letter'
 
 
 class Playletters extends Component {
@@ -12,7 +13,9 @@ class Playletters extends Component {
                 <Transition visible={this.props.visible} animation='scale' duration={500}>
                     <Header as='h1'>
                         {this.props.playletters ?
-                            this.props.playletters.split('').sort(function () { return 0.5 - Math.random() }).join('')
+                            this.props.playletters.split('').sort(function () { return 0.5 - Math.random() }).map((char) => {
+                                return <Letter char={char} />
+                            })
                             : null}
                     </Header>
                 </Transition>

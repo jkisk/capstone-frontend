@@ -173,7 +173,7 @@ class Game extends Component {
                     </Form>
                 
                 <br />
-                <Button onClick={this.playGame} content='NEW GAME' />
+                <Button onClick={this.playGame} content='New Game' />
 
 
 
@@ -184,7 +184,7 @@ class Game extends Component {
                     {this.state.six.sort().map((ele) => { return ele + ' ' })}
                     {this.state.seven.sort().map((ele) => { return ele + ' ' })}
                 </Header>
-                <Button onClick={this.toggleHelp} content="Instructions" />
+                <Button onClick={this.toggleHelp} content="Show Instructions" />
                 {this.state.help?
                     <Help/>
                 : null}

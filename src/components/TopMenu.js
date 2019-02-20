@@ -31,21 +31,21 @@ class TopMenu extends Component {
     render() {
         return (
             <Menu className="TopMenu">
-                <Button.Group widths="4">
+                <Button.Group widths="4" id="menu-btn">
                     {!this.props.player ?
-                        <Button className="menu-btn">
+                        <Button >
                             <Link to={'/login'} >Login to Save Score!</Link>
                         </Button>
                         :
-                        <Button className="menu-btn" onClick={this.handleLogout} content='Logout' />
+                        <Button  onClick={this.handleLogout} content='Logout' />
                     }
-                    <Button className="menu-btn">
+                    <Button >
                         <Link to={'/play'} >Play Scramples</Link>
                     </Button>
-                    <Button className="menu-btn">
+                    <Button >
                         <Link to={'/scores'} >View High Scores</Link>
                     </Button>
-                    <Button className="menu-btn">
+                    <Button >
                         <Link to={'/signup'} >Create Player</Link>
                     </Button>
                     
