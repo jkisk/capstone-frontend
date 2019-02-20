@@ -17,6 +17,7 @@ export const scoreGame = (playerId, score) => {
     return (dispatch) => {
         request(`/player/${playerId}/score`, 'post',  {'score': score})
             .then(result => dispatch({ type: SCORE_GAME, payload: result.data.data }))
+            .then(() => dispatch(getScores()))
             .catch(err => console.log(err))
     }
 }
