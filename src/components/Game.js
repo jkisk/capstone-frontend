@@ -148,7 +148,6 @@ class Game extends Component {
     }
     handleRef = (element) => {
         this.inputRef = element
-        console.log(this);
 
     }
 

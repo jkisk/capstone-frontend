@@ -10,6 +10,7 @@ import Game from './components/Game'
 import Signup from './components/Signup'
 import HighScore from './components/HighScore'
 import TopMenu from './components/TopMenu'
+import Header from './components/Header'
 
 
 class App extends Component {
@@ -23,6 +24,7 @@ class App extends Component {
       <div className="App">
         <Router>
           <Fragment>
+            <Header/>
             <TopMenu />
             <Switch>
               <Route exact path='/' component={() => <Redirect to="/login" />} />
