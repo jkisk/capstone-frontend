@@ -13,8 +13,8 @@ class Playletters extends Component {
                 <Transition visible={this.props.visible} animation='scale' duration={500}>
                     <Header as='h1'>
                         {this.props.playletters ?
-                            this.props.playletters.split('').sort(function () { return 0.5 - Math.random() }).map((char) => {
-                                return <Letter char={char} />
+                            this.props.playletters.split('').sort(function () { return 0.5 - Math.random() }).map((char, id) => {
+                                return <Letter key={id} char={char} />
                             })
                             : null}
                     </Header>
