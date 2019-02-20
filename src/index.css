@@ -15,7 +15,7 @@
 
 .App {
   text-align: center;
-  font-family: "Open Sans" !important;
+  font-family: "Open Sans";
   font-size: calc(15px + 2vmin);
   background-color: #f2ccbf;
   min-height: 100vh;
@@ -30,9 +30,17 @@
   opacity: 30;
 }
 
-.menu-btn {
-  background-color: #edbdd0 !important;
-  outline: 5px, solid, #e37759 !important;
+#menu-btn button{
+  background-color: #edbdd0;
+  outline: 5px, solid, #e37759;
+}
+
+h1 span {
+  display:inline;
+  padding: 20px;
+  border-radius: 20px;
+  margin: 5px;
+  text-transform: uppercase;
 }
 
 
