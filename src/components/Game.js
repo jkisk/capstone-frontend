@@ -94,7 +94,7 @@ class Game extends Component {
     }
 
     endGame = (e) => {
-        if (this.props.playerId.id) {
+        if (this.props.playerId) {
             this.props.scoreGame(this.props.playerId.id, this.state.xscore)
         }
         clearTimeout(this.state.timeout)
@@ -124,14 +124,18 @@ class Game extends Component {
 
     playGame = () => {
         this.focus()
-        this.endGame()
         this.requestNewGame()
         this.setState({
             guess: '',
             isEnd: false,
             visible: true,
             xscore: 0,
-            count: 0
+            count: 0,
+            three: [],
+            four: [],
+            five: [],
+            six: [],
+            seven: []
         })
         let interval = setInterval(this.timer, 1000)
         let timeout = setTimeout(this.endGame, 30000)

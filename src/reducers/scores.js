@@ -7,7 +7,7 @@ const scores = (state = initialState, {type, payload}) => {
     case GET_SCORES: 
       return payload
     case SCORE_GAME:
-        return [payload, ...state]
+        return payload
     default:
       return state
   }

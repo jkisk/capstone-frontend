@@ -11,6 +11,7 @@ class PostGame extends Component {
                 <Transition visible={this.props.isEnd} animation='scale' duration={500}>
                     <Message>
                         Game Over!  You scored {this.props.score} points
+                        {this.props.high? <p>This is your best score ever!</p> : null}
                         <br/>
                         You typed {this.props.count} valid letters
                         <br/>
@@ -23,7 +24,7 @@ class PostGame extends Component {
 }
 
 const mapStateToProps = state => ({
-    
+    high: state.scores.isNewHigh
 })
 
 
