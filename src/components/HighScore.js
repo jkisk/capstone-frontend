@@ -21,8 +21,8 @@ class HighScore extends Component {
                     </Table.Row ></Table.Header>
                 <Table.Body className="">
                     {
-                        this.props.highScores.map((score) => {
-                            return <Score key={score.id} {...score} />
+                        this.props.highScores.map((score, id) => {
+                            return <Score key={id} {...score} />
                         })
 
                     }
