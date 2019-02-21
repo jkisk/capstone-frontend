@@ -83,6 +83,12 @@ class Login extends Component {
             </Button>
                             </Segment>
                         </Form>
+                        {this.state.showErrorMessage ? (
+                            <Message className="error">
+                                Login failed
+                                <Button remove onClick={this.closeErrorMessage} content='X'/>
+                            </Message> 
+                        ) : null}
                         <Message>
                             Need Account? <Link to='/signup'>Sign Up</Link>
                         </Message>
