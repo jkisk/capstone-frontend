@@ -92,10 +92,10 @@ class SignUp extends Component {
                         </Form>
 
                         {this.state.showErrorMessage ? (
-                            <Message>
+                            <Message className='error'>
                                 All fields required and passwords must match
                                 <Button color='pink' onClick={this.closeErrorMessage}>
-                                    close help message
+                                    close message
                                 </Button>
                             </Message>
                         ) : null}
