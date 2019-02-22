@@ -27,7 +27,7 @@ class App extends Component {
             <Header/>
             <TopMenu />
             <Switch>
-              <Route exact path='/' component={() => <Redirect to="/login" />} />
+              <Route exact path='/' component={() => <Redirect to="/play" />} />
               <Route path='/login' component={Login} />
               <Route path='/play' component={Game} />
               <Route path='/signup' component={Signup} />
