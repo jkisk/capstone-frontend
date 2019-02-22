@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { newGame } from '../actions/games'
 import { scoreGame } from '../actions/scores'
-import { Input, Button, Header, Form } from 'semantic-ui-react'
+import { Input, Button, Header, Form, Transition } from 'semantic-ui-react'
 import Playletters from './Playletters'
 import CurrentScore from './CurrentScore'
 import TimeRemaining from './TimeRemaining'
@@ -123,7 +123,6 @@ class Game extends Component {
     }
 
     playGame = () => {
-        this.focus()
         this.requestNewGame()
         this.setState({
             guess: '',
@@ -146,14 +145,14 @@ class Game extends Component {
 
 
     }
-    handleRef = (element) => {
-        this.inputRef = element
+    // handleRef = (element) => {
+    //     this.inputRef = element
 
-    }
+    // }
 
-    focus = () => {
-        this.inputRef.focus()
-    }
+    // focus = () => {
+    //     this.inputRef.focus()
+    // }
 
     toggleHelp = () => {
         this.state.help? this.setState({help: false}) : this.setState({help: true})
@@ -169,11 +168,12 @@ class Game extends Component {
 
                 <Playletters visible={this.state.visible} />
                 <PostGame isEnd={this.state.isEnd} score={this.state.xscore} count={this.state.count} play={() => this.playGame()} />
-                
+                <Transition visible={this.state.visible} animation='scale' duration={500}>
                     <Form onSubmit={this.handleGuess}>
-                        <Input ref={this.handleRef} error={this.state.invalid} autoComplete='off' type="text" onChange={this.handleChange} value={this.state.guess} name="guess" placeholder='Guess Here' />
+                        <Input error={this.state.invalid} autoComplete='off' type="text" onChange={this.handleChange} value={this.state.guess} name="guess" placeholder='Guess Here' />
                         <Button content='Enter' />
                     </Form>
+                </Transition>
                 
                 <br />
                 <Button onClick={this.playGame} content='New Game' />
