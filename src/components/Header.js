@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Image} from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux';
-// import {Logo} from './Logo'
 import mainLogo from '../small_scram.png'
 
 
