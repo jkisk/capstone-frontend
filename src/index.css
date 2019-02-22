@@ -35,8 +35,13 @@
   outline: 5px, solid, #e37759;
 }
 
-#logo Image{
-  width: 400px;
+#logo {
+ padding: 20px;
+}
+
+#welcome {
+  text-align: right;
+  padding: 20px
 }
 
 h1 span {

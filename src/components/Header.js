@@ -15,7 +15,9 @@ render() {
             <div id='logo'>
             <Image src={mainLogo}/>
             </div>
+            <div id='welcome'>
         {this.props.player? <p>Welcome {this.props.player.playername}</p> : null}
+            </div>
         </div>
     )
 
