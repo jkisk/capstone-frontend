@@ -61,24 +61,23 @@ class Login extends Component {
     `}</style>
                 <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
                     <Grid.Column style={{ maxWidth: 450 }}>
-                        <Header as='h2' color='orange' textAlign='center'>
-                            {/* <Image src='/logo.png' />  */}
+                        <Header as='h2' color='black' textAlign='center'>
                             Login to your account
         </Header>
                         <Form size='large' onSubmit={this.handleSubmit}>
                             <Segment stacked>
-                                <Form.Input onChange={this.handleChange} name="playername" fluid icon='user' iconPosition='left' placeholder='Player Name' />
+                                <Form.Input onChange={this.handleChange} name="playername" fluid placeholder='Player Name' />
                                 <Form.Input
                                     onChange={this.handleChange}
                                     name="password"
                                     fluid
-                                    icon='lock'
-                                    iconPosition='left'
+                                    // icon='lock'
+                                    // iconPosition='left'
                                     placeholder='Password'
                                     type='password'
                                 />
 
-                                <Button color='pink' fluid size='large'>
+                                <Button id='log-btn' fluid size='large'>
                                     Login
             </Button>
                             </Segment>
