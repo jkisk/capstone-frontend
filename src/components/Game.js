@@ -123,6 +123,7 @@ class Game extends Component {
     }
 
     playGame = () => {
+        this.endGame()
         this.requestNewGame()
         this.setState({
             guess: '',
