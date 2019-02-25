@@ -11,8 +11,7 @@ class PostGame extends Component {
                 <Transition visible={this.props.isEnd} animation='scale' duration={500}>
                     <Message id='postgame'>
                         Game Over!  You scored {this.props.score} points
-                        {this.props.high? <p>This is your best score ever!</p> : null}
-                        <br/>
+                        {this.props.high? <h1>This is your best score ever!</h1> : null}
                         You typed {this.props.count} valid letters
                     </Message>
                 </Transition>
