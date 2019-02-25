@@ -33,7 +33,7 @@ class HighScore extends Component {
 }
 
 const mapStateToProps = state => ({
-    highScores: state.scores
+    highScores: state.scores.high_scores
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
