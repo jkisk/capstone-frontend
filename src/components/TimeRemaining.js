@@ -9,7 +9,7 @@ class TimeRemaining extends Component {
         return (
             
                 <Transition visible={this.props.visible} animation='scale' duration={500}>
-                    <Header as='h3'>
+                    <Header as='h1'>
                         Time Remaining = {this.props.time} 
                     </Header>
                 </Transition>

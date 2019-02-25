@@ -13,13 +13,13 @@ class HighScore extends Component {
 
     render() {
         return (
-            <Table className="ui celled table">
-                <Table.Header className="">
-                    <Table.Row className=""><Table.HeaderCell className="">Score</Table.HeaderCell>
-                        <Table.HeaderCell className="">Player</Table.HeaderCell>
-                        <Table.HeaderCell className="">Date</Table.HeaderCell>
+            <Table id='score-table' className="ui celled table">
+                <Table.Header>
+                    <Table.Row><Table.HeaderCell>Score</Table.HeaderCell>
+                        <Table.HeaderCell>Player</Table.HeaderCell>
+                        <Table.HeaderCell>Date</Table.HeaderCell>
                     </Table.Row ></Table.Header>
-                <Table.Body className="">
+                <Table.Body>
                     {
                         this.props.highScores.map((score, id) => {
                             return <Score key={id} {...score} />

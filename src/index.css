@@ -23,14 +23,31 @@
 
 #log-btn {
   background-color: #edbdd0;
-  outline: 5px, solid, #e37759;
 }
 
 #sign-btn {
   background-color: #edbdd0;
-  outline: 5px, solid, #e37759;
 }
 
+#game-enter-btn {
+  background-color: #edbdd0;
+}
+
+#game-play-btn {
+  background-color: #e37759;
+}
+
+#game-instructions-btn {
+  background-color: #edbdd0;
+}
+
+#score-table {
+  background-color: #f2ccbf;
+}
+
+#postgame {
+  background-color: #f2ccbf;
+}
 #logo {
  padding: 20px;
 }
@@ -40,7 +57,7 @@
   padding: 20px
 }
 
-h1 span {
+#play-char {
   display:inline;
   border-radius: 20px;
   margin: 5px;

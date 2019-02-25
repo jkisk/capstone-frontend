@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { newGame } from '../actions/games'
 import { scoreGame } from '../actions/scores'
-import { Input, Button, Header, Form, Transition } from 'semantic-ui-react'
+import { Input, Button, Header, Form, Transition, Grid } from 'semantic-ui-react'
 import Playletters from './Playletters'
 import CurrentScore from './CurrentScore'
 import TimeRemaining from './TimeRemaining'
@@ -146,40 +146,53 @@ class Game extends Component {
 
 
     }
-    // handleRef = (element) => {
-    //     this.inputRef = element
-
-    // }
-
-    // focus = () => {
-    //     this.inputRef.focus()
-    // }
 
     toggleHelp = () => {
-        this.state.help? this.setState({help: false}) : this.setState({help: true})
+        this.state.help ? this.setState({ help: false }) : this.setState({ help: true })
     }
 
 
     render() {
         return (
             <div className='Game'>
+                <Grid>
+                    <Grid.Row columns={2}>
+                        <Grid.Column>
+                            <TimeRemaining visible={this.state.visible} time={this.state.time} />
+                        </Grid.Column>
+                        <Grid.Column>
+                            <CurrentScore visible={this.state.visible} xscore={this.state.xscore} />
+                        </Grid.Column>
+                    </Grid.Row>
+                    <Grid.Row columns={1}>
+                        <Grid.Column>
+                            <Playletters visible={this.state.visible} />
+                        </Grid.Column>
+                    </Grid.Row>
+                    <Grid.Row columns={1}>
+                        <Grid.Column>
+                            <Transition visible={this.state.visible} animation='scale' duration={500}>
+                                <Form onSubmit={this.handleGuess}>
+                                    <Input error={this.state.invalid} autoComplete='off' type="text" onChange={this.handleChange} value={this.state.guess} name="guess" placeholder='Guess Here' />
+                                    <Button id='game-enter-btn' content='Enter' />
+                                </Form>
+                            </Transition>
+                            <PostGame isEnd={this.state.isEnd} score={this.state.xscore} count={this.state.count} play={() => this.playGame()} />
+                        </Grid.Column>
+                    </Grid.Row>
+                    <Grid.Row columns={1}>
+                        <Grid.Column>
+                            <Button id="game-play-btn" onClick={this.playGame} content='Start New Game' />
+                        </Grid.Column>
+                    </Grid.Row>
 
-                <CurrentScore visible={this.state.visible} xscore={this.state.xscore} />
-                <TimeRemaining visible={this.state.visible} time={this.state.time} />
-
-                <Playletters visible={this.state.visible} />
-                <PostGame isEnd={this.state.isEnd} score={this.state.xscore} count={this.state.count} play={() => this.playGame()} />
-                <Transition visible={this.state.visible} animation='scale' duration={500}>
-                    <Form onSubmit={this.handleGuess}>
-                        <Input error={this.state.invalid} autoComplete='off' type="text" onChange={this.handleChange} value={this.state.guess} name="guess" placeholder='Guess Here' />
-                        <Button content='Enter' />
-                    </Form>
-                </Transition>
-                
-                <br />
-                <Button onClick={this.playGame} content='New Game' />
+                    
 
 
+                    <br />
+
+
+                </Grid>
 
                 <Header as='h2'>
                     {this.state.three.sort().map((ele) => { return ele + ' ' })}
@@ -188,10 +201,10 @@ class Game extends Component {
                     {this.state.six.sort().map((ele) => { return ele + ' ' })}
                     {this.state.seven.sort().map((ele) => { return ele + ' ' })}
                 </Header>
-                <Button onClick={this.toggleHelp} content="Show Instructions" />
-                {this.state.help?
-                    <Help/>
-                : null}
+                <Button id="game-instructions-btn" onClick={this.toggleHelp} content="Show Instructions" />
+                {this.state.help ?
+                    <Help />
+                    : null}
             </div >
         )
     }

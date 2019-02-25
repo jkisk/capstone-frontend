@@ -1,11 +1,11 @@
 import React from 'react'
-// import {Button} from 'semantic-ui-react'
+// import { Card } from 'semantic-ui-react'
 
 
-export default function Letter({char}) {
+export default function Letter({ char }) {
     return (
-        <span>
-            {char}
-        </span>
+        <div id='play-char'>
+                {char}
+        </div>
     )
 }
