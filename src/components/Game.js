@@ -173,7 +173,7 @@ class Game extends Component {
                         <Grid.Column>
                             <Transition visible={this.state.visible} animation='scale' duration={500}>
                                 <Form onSubmit={this.handleGuess}>
-                                    <Input error={this.state.invalid} autoComplete='off' type="text" onChange={this.handleChange} value={this.state.guess} name="guess" placeholder='Guess Here' />
+                                    <Input error={this.state.invalid} autoComplete='off' autoCapitalize="off" spellCheck="false" autoCorrect="off" type="text" onChange={this.handleChange} value={this.state.guess} name="guess" placeholder='Guess Here' />
                                     <Button id='game-enter-btn' content='Enter' />
                                 </Form>
                             </Transition>
