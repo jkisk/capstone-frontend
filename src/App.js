@@ -24,8 +24,9 @@ class App extends Component {
       <div className="App">
         <Router>
           <Fragment>
-            <Header/>
+         
             <TopMenu />
+            <Header/>
             <Switch>
               <Route exact path='/' component={() => <Redirect to="/play" />} />
               <Route path='/login' component={Login} />

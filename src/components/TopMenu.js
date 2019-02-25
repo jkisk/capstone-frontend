@@ -45,9 +45,13 @@ class TopMenu extends Component {
                     <Button >
                         <Link to={'/scores'} >View High Scores</Link>
                     </Button>
-                    <Button >
-                        <Link to={'/signup'} >Create Player</Link>
-                    </Button>
+                    {this.props.player ?
+                    <Button>Welcome {this.props.player.playername}</Button>
+                    :<Button >
+                    <Link to={'/signup'} >Create Player</Link>
+                </Button>
+                }
+                    
                     
                 </Button.Group>
             </Menu >

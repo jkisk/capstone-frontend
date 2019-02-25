@@ -10,7 +10,7 @@ class CurrentScore extends Component {
     render() {
         return (
                 <Transition visible={this.props.visible} animation='scale' duration={500}>
-                    <Header as='h1'>
+                    <Header as='h2'>
                         Score = {this.props.xscore} 
                     </Header>
                 </Transition>
