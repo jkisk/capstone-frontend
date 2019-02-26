@@ -186,7 +186,7 @@ class Game extends Component {
                         </Grid.Column>
                     </Grid.Row>
 
-                    
+
 
 
                     <br />
@@ -201,10 +201,12 @@ class Game extends Component {
                     {this.state.six.sort().map((ele) => { return ele + ' ' })}
                     {this.state.seven.sort().map((ele) => { return ele + ' ' })}
                 </Header>
-                <Button id="game-instructions-btn" onClick={this.toggleHelp} content="Show Instructions" />
                 {this.state.help ?
-                    <Help />
-                    : null}
+                    <div>
+                        <Button id="game-instructions-btn" onClick={this.toggleHelp} content="Hide Instructions" />
+                        <Help />
+                    </div>
+                    : <Button id="game-instructions-btn" onClick={this.toggleHelp} content="Show Instructions" />}
             </div >
         )
     }
