@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { newGame } from '../actions/games'
 import { scoreGame } from '../actions/scores'
-import { Input, Button, Header, Form, Transition, Grid } from 'semantic-ui-react'
+import { Input, Button, Header, Form, Transition, Grid, Container } from 'semantic-ui-react'
 import Playletters from './Playletters'
 import CurrentScore from './CurrentScore'
 import TimeRemaining from './TimeRemaining'
@@ -155,6 +155,7 @@ class Game extends Component {
     render() {
         return (
             <div className='Game'>
+                <Container>
                 <Grid>
                     <Grid.Row columns={2}>
                         <Grid.Column>
@@ -167,6 +168,7 @@ class Game extends Component {
                     <Grid.Row columns={1}>
                         <Grid.Column>
                             <Playletters visible={this.state.visible} />
+                            <PostGame isEnd={this.state.isEnd} score={this.state.xscore} count={this.state.count} play={() => this.playGame()} />
                         </Grid.Column>
                     </Grid.Row>
                     <Grid.Row columns={1}>
@@ -177,7 +179,7 @@ class Game extends Component {
                                     <Button id='game-enter-btn' content='Enter' />
                                 </Form>
                             </Transition>
-                            <PostGame isEnd={this.state.isEnd} score={this.state.xscore} count={this.state.count} play={() => this.playGame()} />
+                           
                         </Grid.Column>
                     </Grid.Row>
                     <Grid.Row columns={1}>
@@ -185,14 +187,9 @@ class Game extends Component {
                             <Button id="game-play-btn" onClick={this.playGame} content='Start New Game' />
                         </Grid.Column>
                     </Grid.Row>
-
-
-
-
                     <br />
-
-
                 </Grid>
+                </Container>
 
                 <Header as='h2'>
                     {this.state.three.sort().map((ele) => { return ele + ' ' })}
