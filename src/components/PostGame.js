@@ -12,7 +12,7 @@ class PostGame extends Component {
                     <Message id='postgame'>
                         <p>Game Over!  You scored {this.props.score} points </p>
                   
-                        {this.props.high? <p><h1>This is your best score ever!</h1></p>: null}
+                        {this.props.high? <h1>This is your best score ever!</h1>: null}
                      
                         <p>You typed {this.props.count} valid letters</p>
                     </Message>
