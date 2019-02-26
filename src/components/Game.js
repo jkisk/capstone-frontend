@@ -73,7 +73,7 @@ class Game extends Component {
                 letterCount += entry.length
             }
             this.setState({
-                xscore: this.state.xscore + (entry.length * 15)
+                xscore: this.state.xscore + (entry.length * entry.length * 10)
             })
         }
         else {
