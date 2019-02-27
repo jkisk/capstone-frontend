@@ -11,7 +11,7 @@ https://wwww.scramples.com
 
 ### Installation Instructions
 
-###git clone 
+### 'git clone' 
 this repository and the backend-repository at github.com/jkisk/capstone-backend
 
 ### 'npm install'
@@ -22,23 +22,23 @@ this repository and the backend-repository at github.com/jkisk/capstone-backend
 ###Screenshots
 
 1. Create Player
-<img src='./images/SignUp' alt="Sign Up">
+<img src='./images/SignUp'>
 
 2. Login Player
-<img src='./images/Login' alt="Log In">
+<img src='./images/Login'>
 
 3. View Instructions
-<img src='./images/ViewInstructions' alt="View Instructions">
+<img src='./images/ViewInstructions'>
 
 4. Play Game
-<img src='./images/GamePlay' alt="Play Game">
+<img src='./images/GamePlay'>
 
 5. End of Game
-<img src='./images/GameEnd' alt="End of Game">
+<img src='./images/GameEnd'>
 
 6. Top 30 High Scores from all players
 
-<img src='./images/HighScores' alt="High Scores">
+<img src='./images/HighScores'>
 
 
 
