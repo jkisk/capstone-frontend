@@ -1,25 +1,25 @@
-### 'Welcome to Scramples'
+### `Welcome to Scramples`
 Scramples is a fast, fun, and mobile friendly web app that supports the creation and authentication of player accounts and stores high scores and personal stats.
 
-### 'Project Link'
+### `Project Link`
 https://wwww.scramples.com
 
-### 'Tech'
+### `Tech`
 
 * Frontend : React/Redux/Semantic-UI-React
 * Backend : Node/Express/Knex/PSQL
 
-### 'Installation Instructions'
+### `Installation Instructions`
 
-### 'git clone' 
+### `git clone` 
 this repository and the backend-repository at github.com/jkisk/capstone-backend
 
-### 'npm install'
+### `npm install`
 
 ### `npm start`
 
 
-### 'Screenshots'
+### `Screenshots`
 
 1. Create Player
 <img src='./images/SignUp.png'>
