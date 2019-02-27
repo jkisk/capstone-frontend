@@ -3,7 +3,6 @@ import request from '../utils/request'
 export const NEW_GAME = 'NEW_GAME'
 
 
-
 export const newGame = (id) => {
   return (dispatch) => {
     request(`/games/${id}`)

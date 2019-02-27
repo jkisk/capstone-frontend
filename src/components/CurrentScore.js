@@ -6,7 +6,6 @@ import {connect} from 'react-redux'
 class CurrentScore extends Component {
 
 
-
     render() {
         return (
                 <Transition visible={this.props.visible} animation='scale' duration={500}>
@@ -22,12 +21,6 @@ const mapStateToProps = state => ({
 
 })
 
-// const mapDispatchToProps = dispatch => bindActionCreators({
-
-
-// }, dispatch)
-
 export default connect(
-    mapStateToProps,
-    // mapDispatchToProps
+    mapStateToProps
 )(CurrentScore);

@@ -13,15 +13,12 @@ class TimeRemaining extends Component {
                         Time = {this.props.time} 
                     </Header>
                 </Transition>
-        
         )
     }
 }
 
 const mapStateToProps = state => ({
-
 })
-
 
 export default connect(
     mapStateToProps,

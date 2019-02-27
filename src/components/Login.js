@@ -71,8 +71,6 @@ class Login extends Component {
                                     onChange={this.handleChange}
                                     name="password"
                                     fluid
-                                    // icon='lock'
-                                    // iconPosition='left'
                                     placeholder='Password'
                                     type='password'
                                 />
@@ -94,11 +92,6 @@ class Login extends Component {
                     </Grid.Column>
                 </Grid>
             </div>
-            // <form onSubmit={this.handleSubmit}>
-            //     <Input type="text" onChange={this.handleChange} name="playername" placeholder='Player Name' />
-            //     <Input type="text" onChange={this.handleChange} name="password" placeholder='Password' />
-            //     <Button basic color='pink' content='Submit' />
-            // </form>
         )
     }
 }
@@ -109,9 +102,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-
     setAuthentication: setAuthentication
-
 }, dispatch)
 
 export default connect(

@@ -4,7 +4,6 @@ export const GET_SCORES = 'GET_SCORES'
 export const SCORE_GAME = 'SCORE_GAME'
 
 
-
 export const getScores = () => {
     return (dispatch) => {
         request(`/games/scores`)

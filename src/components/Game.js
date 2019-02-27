@@ -144,7 +144,6 @@ class Game extends Component {
             timeout: timeout
         })
 
-
     }
 
     toggleHelp = () => {

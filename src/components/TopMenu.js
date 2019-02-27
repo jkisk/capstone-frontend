@@ -8,12 +8,6 @@ import { playerLogout } from '../actions/auth'
 
 
 class TopMenu extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            isOpen: false,
-        }
-    }
 
     toggle = () => {
         this.setState({
@@ -37,7 +31,7 @@ class TopMenu extends Component {
                             <Link to={'/login'} >Login to Save Score!</Link>
                         </Button>
                         :
-                        <Button  onClick={this.handleLogout} content='Logout' />
+                        <Button onClick={this.handleLogout} content='Logout' />
                     }
                     <Button >
                         <Link to={'/play'} >Play Scramples</Link>
@@ -46,36 +40,23 @@ class TopMenu extends Component {
                         <Link to={'/scores'} >View High Scores</Link>
                     </Button>
                     {this.props.player ?
-                    <Button>Welcome {this.props.player.playername}</Button>
-                    :<Button >
-                    <Link to={'/signup'} >Create Player</Link>
-                </Button>
-                }
-                    
-                    
+                        <Button>Welcome {this.props.player.playername}</Button>
+                        : <Button >
+                            <Link to={'/signup'} >Create Player</Link>
+                        </Button>
+                    }
                 </Button.Group>
             </Menu >
         )
     }
 }
 
-
-
-
-
-
-
-
-
-
 const mapStateToProps = state => ({
     player: state.auth.player
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-
     playerLogout: playerLogout
-
 }, dispatch)
 
 export default withRouter(connect(

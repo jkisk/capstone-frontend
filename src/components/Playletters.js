@@ -7,7 +7,6 @@ import Letter from './Letter'
 class Playletters extends Component {
 
 
-
     render() {
         return (
                 <Transition visible={this.props.visible} animation='scale' duration={500}>
@@ -27,12 +26,6 @@ const mapStateToProps = state => ({
     playletters: state.games.playletters
 })
 
-// const mapDispatchToProps = dispatch => bindActionCreators({
-
-
-// }, dispatch)
-
 export default connect(
-    mapStateToProps,
-    // mapDispatchToProps
+    mapStateToProps
 )(Playletters);

@@ -7,7 +7,6 @@ import auth from './reducers/auth'
 import players from './reducers/players'
 
 
-
 const reducers = combineReducers({
   games,
   scores,
@@ -15,11 +14,9 @@ const reducers = combineReducers({
   players
 })
 
-
 const middleware = [
   thunk,
   logger,
 ]
-
 
 export default createStore(reducers, applyMiddleware(...middleware))

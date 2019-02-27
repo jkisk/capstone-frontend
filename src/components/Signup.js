@@ -62,24 +62,17 @@ class SignUp extends Component {
                                 <Form.Input
                                     onChange={this.handleChange}
                                     name="playername"
-                                    // fluid icon='user'
-                                    // iconPosition='left'
                                     placeholder='Player Name' />
                                 <Form.Input
                                     onChange={this.handleChange}
                                     name="password"
                                     fluid
-                                    // icon='lock'
-                                    // iconPosition='left'
                                     placeholder='Password'
                                     type='password'
                                 />
                                 <Form.Input
                                     onChange={this.handleChange}
                                     name="matchPassword"
-                                    // fluid
-                                    // icon='lock'
-                                    // iconPosition='left'
                                     placeholder='Retype Password'
                                     type='password'
                                 />
@@ -109,11 +102,9 @@ class SignUp extends Component {
 }
 
 const mapStateToProps = state => ({
-   
 })
 const mapDispatchToProps = dispatch => bindActionCreators({
     createPlayer: createPlayer
-
 }, dispatch)
 
 export default connect(
