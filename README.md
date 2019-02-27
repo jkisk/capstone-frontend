@@ -25,7 +25,7 @@ this repository and the backend-repository at github.com/jkisk/capstone-backend
 <img src='./images/SignUp.png'>
 
 2. Login Player
-<img src='./images/Login.png'>
+<img src='./images/LogIn.png'>
 
 3. View Instructions
 <img src='./images/ViewInstructions.png'>
@@ -38,7 +38,7 @@ this repository and the backend-repository at github.com/jkisk/capstone-backend
 
 6. Top 30 High Scores from all players
 
-<img src='./images/HighScores.png'>
+<img src='./images/HighScore.png'>
 
 
 
