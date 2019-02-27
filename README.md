@@ -22,23 +22,23 @@ this repository and the backend-repository at github.com/jkisk/capstone-backend
 ###Screenshots
 
 1. Create Player
-<img src='./images/SignUp'>
+<img src='./images/SignUp.png'>
 
 2. Login Player
-<img src='./images/Login'>
+<img src='./images/Login.png'>
 
 3. View Instructions
-<img src='./images/ViewInstructions'>
+<img src='./images/ViewInstructions.png'>
 
 4. Play Game
-<img src='./images/GamePlay'>
+<img src='./images/GamePlay.png'>
 
 5. End of Game
-<img src='./images/GameEnd'>
+<img src='./images/GameEnd.png'>
 
 6. Top 30 High Scores from all players
 
-<img src='./images/HighScores'>
+<img src='./images/HighScores.png'>
 
 
 
