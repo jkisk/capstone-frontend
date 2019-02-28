@@ -53,10 +53,12 @@ class SignUp extends Component {
                             <Segment stacked>
                                 <Form.Input
                                     onChange={this.handleChange}
+                                    autoComplete='off'
                                     name="playername"
                                     placeholder='Player Name' />
                                 <Form.Input
                                     onChange={this.handleChange}
+                                    autoComplete='off'
                                     name="password"
                                     fluid
                                     placeholder='Password'
@@ -64,6 +66,7 @@ class SignUp extends Component {
                                 />
                                 <Form.Input
                                     onChange={this.handleChange}
+                                    autoComplete='off'
                                     name="matchPassword"
                                     placeholder='Retype Password'
                                     type='password'

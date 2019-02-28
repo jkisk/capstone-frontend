@@ -58,9 +58,16 @@ class Login extends Component {
         </Header>
                         <Form size='large' onSubmit={this.handleSubmit}>
                             <Segment stacked>
-                                <Form.Input onChange={this.handleChange} name="playername" fluid placeholder='Player Name' />
+                                <Form.Input 
+                                onChange={this.handleChange} 
+                                autoComplete='off'
+                                name="playername" 
+                                fluid 
+                                placeholder='Player Name' 
+                                />
                                 <Form.Input
                                     onChange={this.handleChange}
+                                    autoComplete='off'
                                     name="password"
                                     fluid
                                     placeholder='Password'
