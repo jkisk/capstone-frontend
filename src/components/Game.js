@@ -112,6 +112,22 @@ class Game extends Component {
         })
     }
 
+    clearGame = (e) => {
+        clearTimeout(this.state.timeout)
+        clearInterval(this.state.interval)
+        this.setState({
+            visible: false,
+            guess: '',
+            three: [],
+            four: [],
+            five: [],
+            six: [],
+            seven: [],
+            isEnd: true,
+            time: 30
+        })
+    }
+
     timer = () => {
         let newCount = this.state.time - 1
         if (newCount >= 0) {
@@ -123,7 +139,7 @@ class Game extends Component {
     }
 
     playGame = () => {
-        this.endGame()
+        this.clearGame()
         this.requestNewGame()
         this.setState({
             guess: '',
